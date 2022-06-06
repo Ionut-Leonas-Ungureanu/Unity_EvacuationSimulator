@@ -1,0 +1,14 @@
+﻿  ActivationFunctions.cpp
+  DeepQ.cpp
+  DerivativeFunctions.cpp
+  dllmain.cpp
+  LayoutDeepQ.cpp
+  LayoutNeuralNetwork.cpp
+  NeuralNetwork.cpp
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\NeuralNetwork.cpp(307,16): warning C4244: 'initializing': conversion from 'uint64_t' to 'size_t', possible loss of data
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\NeuralNetwork.cpp(310,21): warning C4244: 'initializing': conversion from 'uint64_t' to 'size_t', possible loss of data
+  Neuron.cpp
+  pch.cpp
+  Main.cpp
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\TestNetwork\Main.cpp(4,10): fatal error C1083: Cannot open include file: 'NeuralNetwork.h': No such file or directory
+  Generating Code...

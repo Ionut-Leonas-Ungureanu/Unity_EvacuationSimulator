@@ -1,0 +1,12 @@
+﻿  pch.cpp
+  dllmain.cpp
+  DQNBrain.cpp
+  NeuralNetwork.cpp
+  NeuralNetworkLayer.cpp
+  Neuron.cpp
+     Creating library C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\Release\DeepQNetworkNative.lib and object C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\Release\DeepQNetworkNative.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 370 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  DeepQNetworkNative.vcxproj -> C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\Release\DeepQNetworkNative.dll

@@ -1,0 +1,14 @@
+﻿  pch.cpp
+  ActivationFunctions.cpp
+  DerivativeFunctions.cpp
+  dllmain.cpp
+  DeepQ.cpp
+  LayoutDeepQ.cpp
+  LayoutNeuralNetwork.cpp
+  NeuralNetwork.cpp
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\NeuralNetwork.cpp(307,16): warning C4244: 'initializing': conversion from 'uint64_t' to 'size_t', possible loss of data
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\NeuralNetwork.cpp(310,21): warning C4244: 'initializing': conversion from 'uint64_t' to 'size_t', possible loss of data
+  Neuron.cpp
+  Generating Code...
+     Creating library C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\Debug\DeepQNetworkNative.lib and object C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\Debug\DeepQNetworkNative.exp
+  DeepQNetworkNative.vcxproj -> C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\Debug\DeepQNetworkNative.dll

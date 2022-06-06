@@ -1,0 +1,17 @@
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\bin\Debug\QMazeDemo.exe.config
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\bin\Debug\QMazeDemo.exe
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\bin\Debug\QMazeDemo.pdb
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.csproj.AssemblyReference.cache
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\MainWindow.g.cs
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\App.g.cs
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo_MarkupCompile.cache
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo_MarkupCompile.lref
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\MainWindow.baml
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.g.resources
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.Properties.Resources.resources
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.csproj.GenerateResource.cache
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.csproj.CoreCompileInputs.cache
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.exe
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.pdb
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\obj\Debug\QMazeDemo.csproj.CopyComplete
+C:\Development\Git\ProiectMaster\Development_Project\QMazeDemo\QMazeDemo\bin\Debug\DeepQNetworkWrapper.pdb

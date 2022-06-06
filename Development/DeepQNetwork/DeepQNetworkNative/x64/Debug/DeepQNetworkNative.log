@@ -1,0 +1,11 @@
+﻿  pch.cpp
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(958,76): warning C4003: not enough arguments for function-like macro invocation 'max'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(964,76): warning C4003: not enough arguments for function-like macro invocation 'min'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(965,75): warning C4003: not enough arguments for function-like macro invocation 'max'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(982,66): warning C4003: not enough arguments for function-like macro invocation 'max'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(983,72): warning C4003: not enough arguments for function-like macro invocation 'max'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(958,76): error C2589: '(': illegal token on right side of '::'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(2007): message : see reference to class template instantiation 'rapidjson::GenericValue<Encoding,Allocator>' being compiled
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(958,76): error C2760: syntax error: unexpected token '(', expected ')'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(982,66): error C2589: '(': illegal token on right side of '::'
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkNative\rapidjson\document.h(982,66): error C2760: syntax error: unexpected token '(', expected ')'

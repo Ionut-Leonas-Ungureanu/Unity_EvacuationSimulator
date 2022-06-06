@@ -1,0 +1,12 @@
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\bin\Debug\Snake.exe.config
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\bin\Debug\Snake.exe
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\bin\Debug\Snake.pdb
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.csproj.AssemblyReference.cache
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.Form1.resources
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.Properties.Resources.resources
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.csproj.GenerateResource.cache
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.csproj.CoreCompileInputs.cache
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.exe
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.pdb
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\bin\Debug\DeepQNetworkWrapper.pdb
+C:\Development\Git\ProiectMaster\Development_Project\Snake\Snake\obj\Debug\Snake.csproj.CopyComplete

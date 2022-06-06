@@ -1,0 +1,6 @@
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkWrapper\bin\Release\DeepQNetworkWrapper.dll
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkWrapper\bin\Release\DeepQNetworkWrapper.pdb
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkWrapper\obj\Release\DeepQNetworkWrapper.csproj.CoreCompileInputs.cache
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkWrapper\obj\Release\DeepQNetworkWrapper.dll
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkWrapper\obj\Release\DeepQNetworkWrapper.pdb
+C:\Development\Git\ProiectMaster\Development_Project\DeepQNetwork\DeepQNetworkWrapper\obj\Release\DeepQNetworkWrapper.csproj.AssemblyReference.cache

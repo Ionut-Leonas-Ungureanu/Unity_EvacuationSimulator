@@ -1,0 +1,11 @@
+>> LOG TYPE: Exception
+>> CONDITION: FormatException: The specified format 'D2' is invalid
+>> STACK TRACE: System.NumberFormatter.NumberToString (System.String format, System.Globalization.NumberFormatInfo nfi) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+System.NumberFormatter.NumberToString (System.String format, System.Single value, System.IFormatProvider fp) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+System.Number.FormatSingle (System.Single value, System.String format, System.Globalization.NumberFormatInfo info) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+System.Single.ToString (System.String format, System.IFormatProvider provider) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+System.Text.StringBuilder.AppendFormatHelper (System.IFormatProvider provider, System.String format, System.ParamsArray args) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+System.String.FormatHelper (System.IFormatProvider provider, System.String format, System.ParamsArray args) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+System.String.Format (System.String format, System.Object arg0) (at <eae584ce26bc40229c1b1aa476bfa589>:0)
+Assets.Scripts.Prefabs.Simulator.Simulator.FixedUpdate () (at Assets/Scripts/Prefabs/Simulator/Simulator.cs:109)
+
