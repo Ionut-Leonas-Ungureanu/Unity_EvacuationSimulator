@@ -15,7 +15,7 @@ namespace Assets.Scripts.Utils.AStar
         public static int GridSizeZ { get; set; }
         public static float NodeDiameter { get; set; }
 
-        private static ReaderWriterLock _lock = new ReaderWriterLock();
+        private static readonly ReaderWriterLock _lock = new ReaderWriterLock();
         private static List<(int x, int y, int z)> _nodesInvalidated = new List<(int x, int y, int z)>();
 
         public static List<Node> FindPath(Vector3 startPos, Vector3 targetPos)
@@ -29,7 +29,6 @@ namespace Assets.Scripts.Utils.AStar
             {
                 _lock.AcquireReaderLock(Timeout.Infinite);
 
-                //Debug.Log("Navigator: Finding path");
                 var tracer = new PathRetracer();
                 var containers = new Dictionary<Node, AStarNodeContainer<Node>>();
                 Node startNode = NodeFromWorldPoint(startPos);
@@ -37,13 +36,11 @@ namespace Assets.Scripts.Utils.AStar
 
                 if(startNode == null)
                 {
-                    Debug.LogWarning($"StartNode {startPos} is null.");
                     return null;
                 }
 
                 if (targetNode == null)
                 {
-                    Debug.LogWarning("TargetNode is null.");
                     return null;
                 }
 
@@ -99,7 +96,7 @@ namespace Assets.Scripts.Utils.AStar
                 }
 
                 var path = tracer.RetraceBack(targetNode, startNode);
-                //Debug.Log($"Navigator: Returning path of length {path.Count}");
+
                 return path;
             }
             finally
@@ -155,11 +152,11 @@ namespace Assets.Scripts.Utils.AStar
         {
             var result = new List<Node>();
 
-            for (var x = -2; x <= 2; x++)
+            for (var x = -1; x <= 1; x++)
             {
                 for (var y = 3; y >= 0; y--)
                 {
-                    for (var z = -2; z <= 2; z++)
+                    for (var z = -1; z <= 1; z++)
                     {
                         if (x == 0 && y == 0 && z == 0)
                         {

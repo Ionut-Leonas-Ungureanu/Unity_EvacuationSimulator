@@ -48,9 +48,8 @@ namespace Assets.Scripts.Utils.Processor
                 {
                     _task?.Invoke();
                 }
-                catch(Exception ex)
+                catch
                 {
-                    Debug.LogWarning($"{ex.Message} + {ex.StackTrace}");
                 }
             }
         }

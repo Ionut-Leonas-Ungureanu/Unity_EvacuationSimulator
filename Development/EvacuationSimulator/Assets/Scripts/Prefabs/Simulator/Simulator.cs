@@ -1,11 +1,8 @@
 ﻿using Assets.Scripts.DesignPatterns.Singleton;
 using Assets.Scripts.Prefabs.Simulator.States.Context;
 using Assets.Scripts.Utils;
-using Assets.Scripts.Utils.AStar;
 using Assets.Scripts.Utils.Processor;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 namespace Assets.Scripts.Prefabs.Simulator
@@ -53,28 +50,8 @@ namespace Assets.Scripts.Prefabs.Simulator
 
         public UnityDispatcher Dispatcher { get; set; }
 
-        private void Awake()
-        {
-            Application.logMessageReceived += Application_logMessageReceived;
-        }
-
-        private void Application_logMessageReceived(string condition, string stackTrace, LogType type)
-        {
-            if (type == LogType.Exception || type == LogType.Error)
-            {
-                using (var streamWriter = new StreamWriter("Application_LOG.log"))
-                {
-                    streamWriter.WriteLine($">> LOG TYPE: {type}");
-                    streamWriter.WriteLine($">> CONDITION: {condition}");
-                    streamWriter.WriteLine($">> STACK TRACE: {stackTrace}");
-                }
-            }
-        }
-
         public void Start()
         {
-            //Debug.Log("Simulator-----SSTART");
-
             Dispatcher = new UnityDispatcher();
             BotsManager = new BotsManager(botPrefab, InstantiateAtPositionGameObject, SimulationConfigurator.Instance.BotsSettings.NumberBots);
             FireManager = fireManager.GetComponent<FireManager>();
@@ -85,8 +62,6 @@ namespace Assets.Scripts.Prefabs.Simulator
             _processor = new Processor(task, stopTask);
 
             SimulationConfigurator.Instance.SoundSettings.AlarmAudioSource = audioSource;
-
-            //EditorApplication.playModeStateChanged += EditorApplication_playModeStateChanged;
 
             _activeControls = false;
             controls.SetActive(_activeControls);
@@ -112,29 +87,6 @@ namespace Assets.Scripts.Prefabs.Simulator
         {
             Dispatcher.Execute();
         }
-
-        //private void OnDestroy()
-        //{
-        //    //resultsCanvas.SetActive(false);
-        //    //var children = new List<GameObject>();
-        //    //foreach(Transform child in transform)
-        //    //{
-        //    //    children.Add(child.gameObject);
-        //    //}
-
-        //    //foreach(var child in children)
-        //    //{
-        //    //    DestroyImmediate(child);
-        //    //}
-        //}
-
-        //private void EditorApplication_playModeStateChanged(PlayModeStateChange obj)
-        //{
-        //    if (!EditorApplication.isPlaying && !EditorApplication.isPaused)
-        //    {
-        //        _processor.Stop();
-        //    }
-        //}
 
         public void StopSimulator()
         {

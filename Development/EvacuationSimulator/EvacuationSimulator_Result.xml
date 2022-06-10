@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RESULTS xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<RESULTS xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RUN Number="1">
+    <BOT Name="Bot 0" Distance="53.30" Time="00:00:32" Status="SAFE" />
+  </RUN>
+</RESULTS>

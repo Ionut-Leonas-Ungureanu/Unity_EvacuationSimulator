@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.DesignPatterns.Singleton;
-using Assets.Scripts.Prefabs.Simulator.States.Context;
+﻿using Assets.Scripts.Prefabs.Simulator.States.Context;
 using Assets.Scripts.Utils;
-using System.Threading;
 
 namespace Assets.Scripts.Prefabs.Simulator.States
 {

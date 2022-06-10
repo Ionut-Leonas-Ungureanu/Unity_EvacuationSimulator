@@ -23,28 +23,7 @@ public class CustomGrid : MonoBehaviour
         Navigator.GridSizeX = Mathf.RoundToInt(gridWorldSize.x / Navigator.NodeDiameter);
         Navigator.GridSizeY = Mathf.RoundToInt(gridWorldSize.y / Navigator.NodeDiameter);
         Navigator.GridSizeZ = Mathf.RoundToInt(gridWorldSize.z / Navigator.NodeDiameter);
-        //var doors = GameObject.FindGameObjectsWithTag("door");
-        //foreach (var door in doors)
-        //{
-        //    door.GetComponent<Door>().ActionDoor();
-        //}
-        ////Thread.Sleep(10000);
-        //StartCoroutine(Generate());
-
-        ////var colliders = Physics.OverlapSphere(start.transform.position, 0.2f);
-        ////foreach (var col in colliders)
-        ////{
-        ////    Debug.Log(col.tag + " -> " + col.name);
-        ////}
     }
-
-    //private void FixedUpdate()
-    //{
-    //    if (IsGenerated)
-    //    {
-    //        Path = GetComponent<Navigator>().FindPath(start.transform.position, target);
-    //    }
-    //}
 
     public IEnumerator Generate()
     {
@@ -109,8 +88,6 @@ public class CustomGrid : MonoBehaviour
         }
 
         positions.Dispose();
-
-        Debug.Log("Physics done");
 
         new Thread(() =>
         {

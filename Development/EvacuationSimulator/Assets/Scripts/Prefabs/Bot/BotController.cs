@@ -2,7 +2,6 @@
 using UnityEngine;
 using Assets.Scripts.Prefabs.Bot.States.Context;
 using Assets.Scripts.Utils;
-using System.IO;
 using System;
 using Assets.Scripts.Utils.Processor;
 using Assets.Scripts.Prefabs.Bot.Observers;
@@ -74,10 +73,6 @@ namespace Assets.Scripts.Prefabs.Bot
             var stopTask = new Action(() => { _context.Terminate = true; });
             _processor = new Processor(task, stopTask);
 
-            Application.logMessageReceived += Application_logMessageReceived;
-            Application.logMessageReceivedThreaded += Application_logMessageReceived;
-            //EditorApplication.playModeStateChanged += EditorApplication_playModeStateChanged;
-
             var checkpoints = GameObject.FindGameObjectsWithTag("CheckPoint");
             _context.Checkpoints = new List<Vector3>();
             foreach (var checkpoint in checkpoints)
@@ -99,51 +94,9 @@ namespace Assets.Scripts.Prefabs.Bot
 
             _processor.Start();
 
-            //Debug.Log($"{name} started");
-
             RegisterCamera();
             Show();
         }
-
-        //private void EditorApplication_playModeStateChanged(PlayModeStateChange obj)
-        //{
-        //    if (!EditorApplication.isPlaying && !EditorApplication.isPaused)
-        //    {
-        //        _processor.Stop();
-        //    }
-        //}
-
-        public void Application_logMessageReceived(string condition, string stackTrace, LogType type)
-        {
-            if (type == LogType.Exception || type == LogType.Error)
-            {
-                using (var streamWriter = new StreamWriter("Application_LOG.log"))
-                {
-                    streamWriter.WriteLine($">> LOG TYPE: {type}");
-                    streamWriter.WriteLine($">> CONDITION: {condition}");
-                    streamWriter.WriteLine($">> STACK TRACE: {stackTrace}");
-                }
-            }
-        }
-
-        //private void OnEnable()
-        //{
-        //    // Get checkpoints
-        //    var checkpoints = GameObject.FindGameObjectsWithTag("CheckPoint");
-        //    // Get closest goal position
-        //    //DistanceToGoal = Distance(checkpoints[0].transform.position);
-        //    _context.GoalPosition = checkpoints[0].transform.position;
-
-        //    //for (var i = 1; i < checkpoints.Length; ++i)
-        //    //{
-        //    //    var distance = Distance(checkpoints[i].transform.position);
-        //    //    if (DistanceToGoal > distance)
-        //    //    {
-        //    //        DistanceToGoal = distance;
-        //    //        GoalPosition = checkpoints[i].transform.position;
-        //    //    }
-        //    //}
-        //}
 
         public void FixedUpdate()
         {
@@ -185,16 +138,6 @@ namespace Assets.Scripts.Prefabs.Bot
 
         #region Methods
 
-        //public void Activate()
-        //{
-        //    _processor.Start();
-        //}
-
-        //public void Deactivate()
-        //{
-        //    _processor.Stop();
-        //}
-
         public void StopMoving()
         {
             lock (_lock)
@@ -202,7 +145,6 @@ namespace Assets.Scripts.Prefabs.Bot
                 Speed = 0f;
                 Direction = 0f;
                 TargetDirection = 0f;
-                Debug.Log("StopMoving");
             }
         }
 
@@ -213,7 +155,6 @@ namespace Assets.Scripts.Prefabs.Bot
                 Speed = 1f;
                 Direction = 0f;
                 TargetDirection = 0f;
-                Debug.Log("StartMoving");
             }
         }
 
@@ -235,20 +176,6 @@ namespace Assets.Scripts.Prefabs.Bot
         {
             _context.Bot._headRenderer.enabled = true;
             _context.Bot._suitRenderer.enabled = true;
-        }
-
-        public void UpdateObserver(RunResultsContainer container)
-        {
-            //Brain.SaveNetwork(Locals.NEURAL_NETWORK_DATA_FILE);
-            Result = new BotResult
-            {
-                Name = gameObject.name,
-                //HealthPoints = HealthPoints.ToString(),
-                //Time = $"{_time.Hours}:{_time.Minutes}:{_time.Seconds}.{_time.Milliseconds}",
-                //Distance = DistanceTravelled.ToString(),
-                //Reward = TotalReward.ToString()
-            };
-            container.Add(Result, Identifier);
         }
 
         public void RegisterCamera()
@@ -289,15 +216,25 @@ namespace Assets.Scripts.Prefabs.Bot
             {
                 foreach (var item in Observers)
                 {
-                    item.Value.Update();
+                    item.Value.Update(Identifier);
                 }
             }
+        }
+
+        public void KillBot()
+        {
+            _context.IsDead = true;
         }
 
         #endregion
 
         private void OnDrawGizmos()
         {
+            if (!_context.IsTrainingTheNetwork)
+            {
+                return;
+            }
+
             if (_context?.NavigationPath == null)
             {
                 return;

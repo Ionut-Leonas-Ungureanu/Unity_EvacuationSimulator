@@ -55,8 +55,6 @@ namespace Assets.Scripts.Utils
             _numberObjectsAxisX = (int)Math.Floor(_width / _scaledPrefabSize);
             _numberObjectsAxisZ = (int)Math.Floor(_length / _scaledPrefabSize);
             _numberObjectsAxisY = (int)Math.Floor(_height / _scaledPrefabSize);
-
-            //Debug.Log($"NUmber of fires: {_numberObjectsAxisX}, {_numberObjectsAxisY}, {_numberObjectsAxisZ}");
         }
 
         public IEnumerator Initialize()
@@ -139,7 +137,6 @@ namespace Assets.Scripts.Utils
 
             IsInitialized = true;
             OnInitialized?.Invoke();
-            //Debug.Log("Fire Nodes Generateed");
         }
 
         public IEnumerator SpreadFire()

@@ -19,11 +19,18 @@ namespace Assets.Scripts.Prefabs
 
         public void Unregister(GameObject camera)
         {
-            _cameras.Remove(camera);
-            if(_cameras.Count == 0)
+            if(_cameras[_currentCameraIndex] == camera)
             {
-                SwitchToMain();
+                if (_cameras.Count > 1)
+                {
+                    Switch();
+                }
+                else
+                {
+                    SwitchToMain();
+                }
             }
+            _cameras.Remove(camera);
         }
 
         public void Switch()

@@ -23,10 +23,6 @@ namespace Assets.Scripts.Utils.Experience
 
         public bool TryDequeue(out T item)
         {
-            //if(_buffer.Count > 1)
-            //{
-            //    Debug.LogWarning("Queue has more than 1 element.");
-            //}
             return _buffer.TryDequeue(out item);
         }
 

@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Prefabs.Bot.Observers;
+﻿using Assets.Scripts.DesignPatterns.Singleton;
+using Assets.Scripts.Prefabs.Bot.Observers;
 using Assets.Scripts.Prefabs.Simulator.States.Context;
 using System.Threading;
-using UnityEngine;
 
 namespace Assets.Scripts.Prefabs.Simulator.States
 {
@@ -14,11 +14,24 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         public ObserveBots(SimulatorContext context) : base(context)
         {
             _lock = new object();
-            _botObserver = new CustomizedBotObserver(() =>
+            _botObserver = new CustomizedBotObserver((identifier) =>
             {
                 lock (_lock)
                 {
+                    if (SimulationConfigurator.Instance.MiscellaneousSettings.Train && (int)identifier == 0)
+                    {
+                        // Kill all remaining bots
+                        foreach(var bot in _context.Simulator.BotsManager.Bots)
+                        {
+                            if (bot.IsActive)
+                            {
+                                bot.KillBot();
+                            }
+                        }
+                    }
+
                     _inactiveBotsCounter++;
+
                     if (_inactiveBotsCounter == _context.Simulator.BotsManager.Bots.Length)
                     {
                         Monitor.Pulse(_lock);
@@ -29,6 +42,8 @@ namespace Assets.Scripts.Prefabs.Simulator.States
 
         protected override void HandleState()
         {
+            _inactiveBotsCounter = 0;
+
             // Start bots
             foreach (var bot in _context.Simulator.BotsManager.Bots)
             {
@@ -36,10 +51,6 @@ namespace Assets.Scripts.Prefabs.Simulator.States
                 bot.Subscribe(_botObserver);
                 bot.HasToEscape = true;
             }
-            Debug.Log($">> Simulation started");
-
-            // Observer bots
-            _inactiveBotsCounter = 0;
 
             lock (_lock)
             {

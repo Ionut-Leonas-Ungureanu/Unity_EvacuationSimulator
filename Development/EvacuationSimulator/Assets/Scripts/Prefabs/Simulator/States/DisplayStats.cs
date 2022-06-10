@@ -33,11 +33,9 @@ namespace Assets.Scripts.Prefabs.Simulator.States
 
         private void ShowResults()
         {
-            //Debug.Log("Showing results");
             var container = new RunResultsContainer(_context.Simulator.BotsManager.Bots.Length, _context.SimulationRoundCounter);
             foreach(var bot in _context.Simulator.BotsManager.Bots)
             {
-                Debug.Log($"Showing results for {bot.Name}");
                 var result = new BotResult
                 {
                     Name = bot.Name,

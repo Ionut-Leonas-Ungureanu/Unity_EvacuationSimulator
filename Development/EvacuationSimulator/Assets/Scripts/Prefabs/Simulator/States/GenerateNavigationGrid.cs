@@ -21,7 +21,6 @@ namespace Assets.Scripts.Prefabs.Simulator.States
                 ThreadEvent.Pulse(_lock);
             };
 
-            //Debug.Log("Generating grid...");
             // Start generating the grid
             _context.Simulator.Dispatcher.Schedule(() =>
             {
@@ -36,7 +35,6 @@ namespace Assets.Scripts.Prefabs.Simulator.States
 
             // Wait to finish
             ThreadEvent.Wait(_lock);
-            //Debug.Log("Grid was generated");
 
             Dialogs.StopShowNavigationDialog();
             ThreadEvent.Wait(_lock);

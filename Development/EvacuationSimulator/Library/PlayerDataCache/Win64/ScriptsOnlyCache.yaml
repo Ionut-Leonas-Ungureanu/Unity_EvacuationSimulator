@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - Door
     - FireManager
     - Fix_elevator_fall
+    - HumanoidWalkScript
     - MainMenu
     - SliderScript
     - evelator_controll
@@ -264,6 +265,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11366}
     - Class: 114
       Script: {instanceID: 11420}
+    - Class: 114
+      Script: {instanceID: 12552}
     - Class: 114
       Script: {instanceID: 12654}
     - Class: 114
@@ -1223,4 +1226,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenuScene.unity
   - Assets/Scenes/SimulationScene.unity
-  playerPath: C:/Users/Ionut-Leonas/Desktop/EvacuationSimulatorBuild/EvacuationSimulator.exe
+  playerPath: C:/Users/Ionut-Leonas/Desktop/new_sim/EvacuationSimulator.exe

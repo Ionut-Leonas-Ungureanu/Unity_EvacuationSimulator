@@ -18,8 +18,6 @@ namespace Assets.Scripts.Prefabs.Bot.States
             {
                 _context.Bot.Hide();
             }).WaitOne();
-
-            Debug.Log("Bot Died!");
         }
     }
 }

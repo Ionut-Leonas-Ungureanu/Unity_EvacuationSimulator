@@ -35,7 +35,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
                 _context.FindPath(botPosition);
 
                 // Start To consume from path
-                _context.PathConsumer = new Processor(_context.ConsumeNavigationPath, () => { Debug.Log("Path consumer thread has ended."); });
+                _context.PathConsumer = new Processor(_context.ConsumeNavigationPath);
                 _context.PathConsumer.Start();
 
                 // Start walking
@@ -62,7 +62,6 @@ namespace Assets.Scripts.Prefabs.Bot.States
             }
 
             _context.SetState(BotStateType.OBSERVE);
-            Debug.Log("Going to observe");
         }
     }
 }

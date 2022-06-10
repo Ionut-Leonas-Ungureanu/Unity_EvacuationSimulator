@@ -24,11 +24,6 @@ namespace Assets.Scripts.Utils.AStar
             var path = new List<Node>();
             Node current = from;
 
-            //if(from == to)
-            //{
-            //    Debug.LogWarning("Retracer: Target = Start");
-            //}
-
             while (_items.ContainsKey(current))
             {
                 path.Add(current);

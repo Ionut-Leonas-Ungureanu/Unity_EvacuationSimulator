@@ -2,7 +2,6 @@
 using Assets.Scripts.Prefabs.Bot.States.Constants;
 using Assets.Scripts.Prefabs.Simulator.States.Context;
 using System.IO;
-using UnityEngine;
 
 namespace Assets.Scripts.Prefabs.Simulator.States
 {
@@ -16,18 +15,18 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         {
             _context.Simulator.StopSimulator();
 
-            //_context.Simulator.Dispatcher.Schedule(() =>
-            //{
-            //    // Show Exit controlls
-            //    _context.Simulator.resultsController.SetActive(true);
-            //}).WaitOne();
-
             // Dispose bots
             _context.Simulator.Dispatcher.Schedule(() =>
             {
                 foreach (var bot in _context.Simulator.BotsManager.Bots)
                 {
                     bot.Dispose();
+                    _context.Simulator.DestroyGameObject(bot.gameObject);
+                }
+
+                foreach(var fireNode in _context.Simulator.FireManager.FireNodes)
+                {
+                    _context.Simulator.DestroyGameObject(fireNode);
                 }
             });
 
@@ -46,7 +45,6 @@ namespace Assets.Scripts.Prefabs.Simulator.States
             _context.ResultsManager.Save();
 
             SimulationConfigurator.Instance.SimulationIsRunning = false;
-            Debug.Log("End of simulation.");
         }
 
         protected override void SetNextState()

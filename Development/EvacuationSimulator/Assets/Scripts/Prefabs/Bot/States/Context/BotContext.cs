@@ -9,7 +9,6 @@ using UnityEngine;
 using Assets.Scripts.Utils.AStar;
 using System.Diagnostics;
 using Assets.Scripts.Utils.Processor;
-using Assets.Scripts.DesignPatterns.Singleton;
 
 namespace Assets.Scripts.Prefabs.Bot.States.Context
 {
@@ -58,10 +57,10 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
                     _botReaderWriterLock.ReleaseWriterLock();
                 }
 
-                //lock (_botPositionLock)
-                //{
-                //    Monitor.PulseAll(_botPositionLock);
-                //}
+                lock (_botPositionLock)
+                {
+                    Monitor.PulseAll(_botPositionLock);
+                }
             }
         }
         public BotController Bot { get; private set; }
@@ -162,8 +161,6 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
             Lock = new object();
             NavigationLock = new object();
             NavigationConsumerLock = new object();
-
-            //UnityEngine.Debug.Log($"{Bot.Name} trains: {IsTrainingTheNetwork}");
 
             InitializeStates();
             InitializeDeepQNetwork();
@@ -274,7 +271,6 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
             {
                 if (NavigationPath == null || NavigationPath.Count <= 2)
                 {
-                    //UnityEngine.Debug.Log("Path consumer thread has ended.");
                     return;
                 }
 
@@ -286,20 +282,11 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
             var botPosition = BotPosition;
             var distance = Vector3.Distance(botPosition, firstNodePosition);
 
-            //if (distance > 6)
-            //{
-            //    UnityEngine.Debug.Log("Distance > 6. The path is recalculated.");
-            //    lock (NavigationLock)
-            //    {
-            //        FindPath(botPosition);
-            //    }
-            //    return;
-            //}
+            var targetForDirection = new Vector3(secondNodePosition.x, firstNodePosition.y, secondNodePosition.z);
+            var direction = targetForDirection - firstNodePosition;
 
-            var direction = secondNodePosition - firstNodePosition;
-
-            if (_rectComputer.IsInProximity(botPosition, firstNodePosition, direction, distance)
-                && firstNodePosition.y > botPosition.y)
+            if (_rectComputer.IsInProximity(botPosition, firstNodePosition, direction, distance))
+                //&& firstNodePosition.y > botPosition.y)
             {
                 CollectedCount++;
 
@@ -314,7 +301,6 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
                         {
                             if (!NavigationPath[i].Walkable)
                             {
-                                UnityEngine.Debug.Log("The path is recalculated.");
                                 FindPath(botPosition);
                                 break;
                             }
@@ -323,14 +309,10 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
                 }
             }
 
-            //lock (_botPositionLock)
-            //{
-            //    Monitor.Wait(_botPositionLock);
-            //}
-
-            Thread.Sleep(SimulationConfigurator.Instance.MiscellaneousSettings.ClearPathSpeed);
-
-            //UnityEngine.Debug.Log("Path consumer thread has ended.");
+            lock (_botPositionLock)
+            {
+                Monitor.Wait(_botPositionLock);
+            }
         }
 
         #endregion
@@ -378,7 +360,6 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
             else
             {
                 neuralNetwork.AddLayer(Locals.DQN_HIDDEN_NO_NEURONS, (uint)Locals.OBSERVATION_SIZE, Locals.DQN_HIDDEN_LAYER_FUNCTION);
-                //neuralNetwork.AddLayer(Locals.DQN_HIDDEN_NO_NEURONS / 2, Locals.DQN_HIDDEN_NO_NEURONS, Locals.DQN_HIDDEN_LAYER_FUNCTION);
                 neuralNetwork.AddLayer((uint)Locals.ACTION_SIZE, Locals.DQN_HIDDEN_NO_NEURONS, Locals.DQN_OUTPUT_LAYER_FUNCTION);
 
                 // Set up the DQN properties

@@ -98,7 +98,7 @@ namespace Assets.Scripts.Utils
                 index = RandomBotPosition.Next(_spawnPositions.Length);
             } while (_spawnPositionTaken[index]);
             _spawnPositionTaken[index] = true;
-            //Debug.Log($"{_spawnPositions[index].transform.position.x}, {_spawnPositions[index].transform.position.y}, {_spawnPositions[index].transform.position.z}");
+            
             return _spawnPositions[index].transform.position;
         }
     }

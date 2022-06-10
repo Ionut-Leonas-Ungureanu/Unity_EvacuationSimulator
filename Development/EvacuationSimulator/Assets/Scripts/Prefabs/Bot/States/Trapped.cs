@@ -14,12 +14,10 @@ namespace Assets.Scripts.Prefabs.Bot.States
             _context.Status = BotStatus.TRAPPED;
             base.HandleState();
 
-            //_context.Bot.Dispatcher.Schedule(() =>
-            //{
-            //    _context.Bot.Hide();
-            //}).WaitOne();
-
-            Debug.Log("Bot Trapped!");
+            _context.Bot.Dispatcher.Schedule(() =>
+            {
+                _context.Bot.Hide();
+            }).WaitOne();
         }
     }
 }

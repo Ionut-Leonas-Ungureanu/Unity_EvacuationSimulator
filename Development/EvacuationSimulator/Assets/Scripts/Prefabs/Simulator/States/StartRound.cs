@@ -17,7 +17,7 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         protected override void HandleState()
         {
             _context.SimulationRoundCounter++;
-            Debug.Log($">> Simulation round {_context.SimulationRoundCounter}");
+            
             _context.Simulator.Dispatcher.Schedule(() => 
             {
                 _context.Simulator.simulationNumberUI.text = _context.SimulationRoundCounter.ToString();

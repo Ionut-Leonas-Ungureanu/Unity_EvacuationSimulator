@@ -13,8 +13,6 @@ namespace Assets.Scripts.Prefabs.Bot.States
         {
             _context.Status = BotStatus.SAFE;
             base.HandleState();
-
-            Debug.Log("Checkpoint reached!");
         }
     }
 }

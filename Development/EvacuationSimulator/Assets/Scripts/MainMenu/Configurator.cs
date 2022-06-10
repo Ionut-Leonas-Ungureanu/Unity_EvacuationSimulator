@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.DesignPatterns.Singleton;
-using Assets.Scripts.Utils;
-using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.MainMenu
@@ -24,7 +20,6 @@ namespace Assets.Scripts.MainMenu
         private Slider AlarmSoundVolume_slider;
 
         private Toggle Train_checkbox;
-        private Slider ClearPathSpeed_slider;
         #endregion
 
         private void Start()
@@ -59,9 +54,6 @@ namespace Assets.Scripts.MainMenu
             AlarmSoundVolume_slider.value = SimulationConfigurator.Instance.SoundSettings.AlarmVolume;
             AlarmSoundVolume_slider.onValueChanged.AddListener(SetAlarmSoundVolume);
 
-            ClearPathSpeed_slider = GameObject.Find("ClearPathSpeed_slider").GetComponent<Slider>();
-            SimulationConfigurator.Instance.MiscellaneousSettings.ClearPathSpeed = (int)ClearPathSpeed_slider.value;
-            ClearPathSpeed_slider.onValueChanged.AddListener(SetClearPathSpeed);
             #endregion
 
             Train_checkbox = GameObject.Find("Train_checkbox").GetComponent<Toggle>();
@@ -114,11 +106,6 @@ namespace Assets.Scripts.MainMenu
         public void SetWaitToDisplayResults(float value)
         {
             SimulationConfigurator.Instance.SimulationSettings.WaitToDisplayResults = value;
-        }
-
-        public void SetClearPathSpeed(float value)
-        {
-            SimulationConfigurator.Instance.MiscellaneousSettings.ClearPathSpeed = (int)value;
         }
 
         #endregion
