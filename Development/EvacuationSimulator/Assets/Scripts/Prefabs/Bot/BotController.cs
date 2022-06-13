@@ -19,6 +19,8 @@ namespace Assets.Scripts.Prefabs.Bot
         private CameraController _cameraController;
         private GameObject _botCamera;
         private Animator _animator;
+        private Rigidbody _rigidBody;
+        private CharacterController _characterController;
 
         private BotContext _context;
         private Processor _processor;
@@ -86,6 +88,8 @@ namespace Assets.Scripts.Prefabs.Bot
             var geo = transform.GetChild(0).gameObject;
             var head = geo.transform.GetChild(0).gameObject;
             var suit = geo.transform.GetChild(1).gameObject;
+            _rigidBody = gameObject.GetComponent<Rigidbody>();
+            _characterController = gameObject.GetComponent<CharacterController>();
             _headRenderer = head.GetComponent<SkinnedMeshRenderer>();
             _suitRenderer = suit.GetComponent<SkinnedMeshRenderer>();
 
@@ -95,7 +99,6 @@ namespace Assets.Scripts.Prefabs.Bot
             _processor.Start();
 
             RegisterCamera();
-            Show();
         }
 
         public void FixedUpdate()
@@ -168,14 +171,19 @@ namespace Assets.Scripts.Prefabs.Bot
 
         public void Hide()
         {
-            _context.Bot._headRenderer.enabled = false;
-            _context.Bot._suitRenderer.enabled = false;
+            Dispatcher.Schedule(() => 
+            {
+                gameObject.SetActive(false);
+                _cameraController.CheckSwitch(_botCamera);
+            }).WaitOne();
         }
 
         public void Show()
         {
-            _context.Bot._headRenderer.enabled = true;
-            _context.Bot._suitRenderer.enabled = true;
+            Dispatcher.Schedule(() =>
+            {
+                gameObject.SetActive(true);
+            }).WaitOne();
         }
 
         public void RegisterCamera()
@@ -216,7 +224,7 @@ namespace Assets.Scripts.Prefabs.Bot
             {
                 foreach (var item in Observers)
                 {
-                    item.Value.Update(Identifier);
+                    item.Value.Update(this);
                 }
             }
         }

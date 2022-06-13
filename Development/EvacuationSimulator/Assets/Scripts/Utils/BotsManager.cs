@@ -40,7 +40,7 @@ namespace Assets.Scripts.Utils
 
             var mainCamera = GameObject.Find("Main Camera"); ;
             
-            for (var i = Bots.Length - 1; i >= 0; --i)
+            for (var i = 0; i < Bots.Length; ++i)
             {
                 // Generate bot
                 var position = GenerateBotPosition();
@@ -79,7 +79,6 @@ namespace Assets.Scripts.Utils
                 Bots[i].gameObject.SetActive(false);
                 Bots[i].transform.position = GenerateBotPosition();
                 Bots[i].gameObject.SetActive(true);
-                Bots[i].Show();
             }
 
             IsReseting = false;

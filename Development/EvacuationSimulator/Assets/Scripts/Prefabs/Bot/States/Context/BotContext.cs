@@ -66,6 +66,7 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
         public BotController Bot { get; private set; }
         public Vector3 LastBotPosition { get; set; }
         public Vector3 GoalPosition { get; set; }
+        public bool RandomGoalPositionSet { get; set; }
         public uint ObservationsAroundGoal { get; set; }
         public List<Vector3> Checkpoints { get; set; }
         public BotState State { get; set; }
@@ -179,6 +180,7 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
             IsDead = false;
             IsCheckpointReached = false;
             IsTrapped = false;
+            RandomGoalPositionSet = false;
             Distance = 0;
             CollectedCount = 0;
         }

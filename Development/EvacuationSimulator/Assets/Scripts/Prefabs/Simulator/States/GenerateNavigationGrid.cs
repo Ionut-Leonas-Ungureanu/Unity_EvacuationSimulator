@@ -18,6 +18,7 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         {
             Dialogs.OnDialogClose = () =>
             {
+                _context.Simulator.dialogs.SetActive(false);
                 ThreadEvent.Pulse(_lock);
             };
 
@@ -29,6 +30,7 @@ namespace Assets.Scripts.Prefabs.Simulator.States
                 {
                     ThreadEvent.Pulse(_lock);
                 };
+                _context.Simulator.dialogs.SetActive(true);
                 _context.Simulator.StartCoroutine(Dialogs.ShowNavigationDialog());
                 _context.Simulator.StartCoroutine(grid.Generate());
             });

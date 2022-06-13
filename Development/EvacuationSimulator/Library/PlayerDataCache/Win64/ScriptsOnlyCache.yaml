@@ -12,7 +12,6 @@ ScriptsOnlyBuild:
     - Door
     - FireManager
     - Fix_elevator_fall
-    - HumanoidWalkScript
     - MainMenu
     - SliderScript
     - evelator_controll
@@ -30,12 +29,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -109,61 +102,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11366}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11462}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11536}
+      Script: {instanceID: 11538}
     - Class: 114
-      Script: {instanceID: 11926}
+      Script: {instanceID: 11924}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12652}
     - Class: 114
-      Script: {instanceID: 12808}
+      Script: {instanceID: 12806}
     - Class: 114
-      Script: {instanceID: 12868}
+      Script: {instanceID: 12866}
     - Class: 114
-      Script: {instanceID: 13102}
+      Script: {instanceID: 13100}
     - Class: 114
-      Script: {instanceID: 13200}
+      Script: {instanceID: 13198}
     - Class: 114
-      Script: {instanceID: 13416}
+      Script: {instanceID: 13414}
     - Class: 114
-      Script: {instanceID: 13444}
+      Script: {instanceID: 13442}
     - Class: 114
-      Script: {instanceID: 14314}
+      Script: {instanceID: 14312}
     - Class: 114
-      Script: {instanceID: 14568}
+      Script: {instanceID: 14566}
     - Class: 114
-      Script: {instanceID: 14906}
+      Script: {instanceID: 14904}
     - Class: 114
-      Script: {instanceID: 14916}
+      Script: {instanceID: 14914}
     - Class: 114
-      Script: {instanceID: 14940}
+      Script: {instanceID: 14938}
     - Class: 114
-      Script: {instanceID: 15512}
+      Script: {instanceID: 15510}
     - Class: 114
-      Script: {instanceID: 15562}
+      Script: {instanceID: 15560}
     - Class: 114
-      Script: {instanceID: 15588}
+      Script: {instanceID: 15586}
     - Class: 114
-      Script: {instanceID: 15688}
+      Script: {instanceID: 15686}
     - Class: 114
-      Script: {instanceID: 16182}
+      Script: {instanceID: 16178}
     - Class: 114
-      Script: {instanceID: 16388}
+      Script: {instanceID: 16384}
     - Class: 114
-      Script: {instanceID: 16438}
+      Script: {instanceID: 16434}
     - Class: 114
-      Script: {instanceID: 16750}
+      Script: {instanceID: 16746}
     - Class: 114
-      Script: {instanceID: 16788}
+      Script: {instanceID: 16784}
     - Class: 114
-      Script: {instanceID: 16834}
+      Script: {instanceID: 16830}
     - Class: 114
-      Script: {instanceID: 16910}
+      Script: {instanceID: 16906}
     - Class: 114
-      Script: {instanceID: 16958}
+      Script: {instanceID: 16954}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -264,51 +257,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11366}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 12552}
+      Script: {instanceID: 12652}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12806}
     - Class: 114
-      Script: {instanceID: 12808}
+      Script: {instanceID: 12866}
     - Class: 114
-      Script: {instanceID: 12868}
+      Script: {instanceID: 13100}
     - Class: 114
-      Script: {instanceID: 13102}
+      Script: {instanceID: 13442}
     - Class: 114
-      Script: {instanceID: 13444}
+      Script: {instanceID: 13784}
     - Class: 114
-      Script: {instanceID: 13786}
+      Script: {instanceID: 13862}
     - Class: 114
-      Script: {instanceID: 13864}
+      Script: {instanceID: 14112}
     - Class: 114
-      Script: {instanceID: 14114}
+      Script: {instanceID: 14312}
     - Class: 114
-      Script: {instanceID: 14314}
+      Script: {instanceID: 14566}
     - Class: 114
-      Script: {instanceID: 14568}
+      Script: {instanceID: 14904}
     - Class: 114
-      Script: {instanceID: 14906}
+      Script: {instanceID: 14914}
     - Class: 114
-      Script: {instanceID: 14916}
+      Script: {instanceID: 15250}
     - Class: 114
-      Script: {instanceID: 15252}
+      Script: {instanceID: 15510}
     - Class: 114
-      Script: {instanceID: 15512}
+      Script: {instanceID: 15560}
     - Class: 114
-      Script: {instanceID: 15562}
+      Script: {instanceID: 15586}
     - Class: 114
-      Script: {instanceID: 15588}
+      Script: {instanceID: 15686}
     - Class: 114
-      Script: {instanceID: 15688}
+      Script: {instanceID: 16434}
     - Class: 114
-      Script: {instanceID: 16438}
+      Script: {instanceID: 16746}
     - Class: 114
-      Script: {instanceID: 16750}
+      Script: {instanceID: 16792}
     - Class: 114
-      Script: {instanceID: 16796}
-    - Class: 114
-      Script: {instanceID: 16910}
+      Script: {instanceID: 16906}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -436,12 +427,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NewBehaviourScript
   - hash:
       serializedVersion: 2
       Hash: aeb62f729c52c814dec86c47dcac1471
@@ -750,7 +735,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: aac98755b4d61e14c2952b50c2cc3316
+      Hash: a07b1afbaa29591cf5967acf531e4515
     assemblyName: Assembly-CSharp.dll
     namespaceName: Assets.Scripts.Prefabs.Simulator
     className: Simulator
@@ -1226,4 +1211,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenuScene.unity
   - Assets/Scenes/SimulationScene.unity
-  playerPath: C:/Users/Ionut-Leonas/Desktop/new_sim/EvacuationSimulator.exe
+  playerPath: C:/Users/Ionut-Leonas/Desktop/EvacuationSimulatorBuild/EvacuationSimulator.exe

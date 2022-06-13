@@ -28,6 +28,7 @@ namespace Assets.Scripts.Prefabs.Simulator
         public GameObject controls;
         public GameObject navigation;
         public GameObject fireManager;
+        public GameObject fireTraps;
         public AudioSource audioSource;
         public TMPro.TextMeshProUGUI simulationNumberUI;
         public TMPro.TextMeshProUGUI fpsUI;
@@ -79,6 +80,7 @@ namespace Assets.Scripts.Prefabs.Simulator
                 if (_context.IsResultActive)
                 {
                     resultsCanvas.SetActive(!resultsCanvas.activeSelf);
+                    resultsController.SetActive(!resultsController.activeSelf);
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Prefabs.Simulator.States.Context;
+﻿using Assets.Scripts.DesignPatterns.Singleton;
+using Assets.Scripts.Prefabs.Simulator.States.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace Assets.Scripts.Prefabs.Simulator.States
             _context.Simulator.Dispatcher.Schedule(() => 
             {
                 _context.Simulator.simulationNumberUI.text = _context.SimulationRoundCounter.ToString();
+                if (SimulationConfigurator.Instance.MiscellaneousSettings.Train)
+                {
+                    _context.Simulator.fireTraps.SetActive(true);
+                }
             });
         }
 

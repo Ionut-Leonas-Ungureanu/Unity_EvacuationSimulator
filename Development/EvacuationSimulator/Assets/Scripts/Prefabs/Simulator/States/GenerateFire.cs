@@ -18,12 +18,14 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         {
             Dialogs.OnDialogClose = () =>
             {
+                _context.Simulator.dialogs.SetActive(false);
                 ThreadEvent.Pulse(_lock);
             };
 
             // Generate fire
             _context.Simulator.Dispatcher.Schedule(() =>
             {
+                _context.Simulator.dialogs.SetActive(true);
                 _context.Simulator.StartCoroutine(Dialogs.ShowFireDialog());
                 _context.Simulator.StartCoroutine(_context.Simulator.FireManager.Generate());
             });

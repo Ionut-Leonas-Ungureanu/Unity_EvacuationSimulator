@@ -23,6 +23,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
             {
                 // Reset
                 _context.Reset();
+                _context.Bot.Show();
 
                 var botPosition = _context.BotPosition;
 

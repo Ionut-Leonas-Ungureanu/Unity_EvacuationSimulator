@@ -9,7 +9,7 @@ namespace Assets.Scripts.MainMenu
         public void StopSimulation()
         {
             SimulationConfigurator.Instance.StopSimulation = true;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
 
         #region Back Button
@@ -20,7 +20,7 @@ namespace Assets.Scripts.MainMenu
             {
                 SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
             }
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
 
         #endregion
@@ -33,7 +33,7 @@ namespace Assets.Scripts.MainMenu
             {
                 Application.Quit();
             }
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
 
         #endregion

@@ -1,0 +1,26 @@
+Deep Q-Learning Tutorial: minDQN
+	Explicatii: https://towardsdatascience.com/deep-q-learning-tutorial-mindqn-2a4c855abffc
+	Cod: https://github.com/mswang12/minDQN/blob/main/minDQN.py
+
+Creating Deep Neural Networks from Scratch, an Introduction to Reinforcement Learning
+	Part 1: https://towardsdatascience.com/creating-deep-neural-networks-from-scratch-an-introduction-to-reinforcement-learning-part-i-549ef7b149d2
+	Part 2: https://towardsdatascience.com/creating-deep-neural-networks-from-scratch-an-introduction-to-reinforcement-learning-6bba874019db
+	Part 3: https://towardsdatascience.com/creating-deep-neural-networks-from-scratch-an-introduction-to-reinforcement-learning-95bcb493a0c9
+
+Adam — latest trends in deep learning optimization.
+	https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c
+	
+Artificial Neural Networks: Mathematics of Backpropagation (Part 4)
+	http://www.briandolhansky.com/blog/2013/9/27/artificial-neural-networks-backpropagation-part-4
+
+12 Types of Neural Networks Activation Functions: How to Choose?
+	https://www.v7labs.com/blog/neural-networks-activation-functions
+	
+How to Code a Neural Network with Backpropagation In Python (from scratch)
+	https://machinelearningmastery.com/implement-backpropagation-algorithm-scratch-python/
+	
+Solving an MDP with Q-Learning from scratch | Deep Reinforcement Learning for Hackers (Part 1)
+	https://curiousily.com/posts/solving-an-mdp-with-q-learning-from-scratch/
+	
+Deep Q-Network (DQN)-II
+	https://towardsdatascience.com/deep-q-network-dqn-ii-b6bf911b6b2c

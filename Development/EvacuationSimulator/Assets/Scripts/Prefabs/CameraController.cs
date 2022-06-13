@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Prefabs.Bot.Observers;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Prefabs
@@ -8,78 +9,14 @@ namespace Assets.Scripts.Prefabs
         public TMPro.TextMeshProUGUI cameraUI;
 
         private int _currentCameraIndex;
-        private bool _isMainCameraActive;
         private GameObject _mainCamera;
-        private List<GameObject> _cameras = new List<GameObject>();
-
-        public void Register(GameObject camera)
-        {
-            _cameras.Add(camera);
-        }
-
-        public void Unregister(GameObject camera)
-        {
-            if(_cameras[_currentCameraIndex] == camera)
-            {
-                if (_cameras.Count > 1)
-                {
-                    Switch();
-                }
-                else
-                {
-                    SwitchToMain();
-                }
-            }
-            _cameras.Remove(camera);
-        }
-
-        public void Switch()
-        {
-            if (_cameras.Count == 0)
-            {
-                return;
-            }
-
-            if (!_isMainCameraActive)
-            {
-                var nextCameraIndex = _currentCameraIndex + 1;
-                if (nextCameraIndex >= _cameras.Count)
-                {
-                    SwitchToMain();
-                    return;
-                }
-                else
-                {
-                    _cameras[nextCameraIndex].SetActive(true);
-                    _cameras[_currentCameraIndex].SetActive(false);
-                    _currentCameraIndex = nextCameraIndex;
-                }
-            }
-
-            if (_isMainCameraActive)
-            {
-                _currentCameraIndex = 0;
-                _cameras[_currentCameraIndex].SetActive(true);
-                _mainCamera.SetActive(false);
-                _isMainCameraActive = false;
-                return;
-            }
-        }
-
-        public void SwitchToMain()
-        {
-            _isMainCameraActive = true;
-            _mainCamera.SetActive(true);
-            if (_cameras.Count != 0)
-            {
-                _cameras[_currentCameraIndex].SetActive(false);
-            }
-        }
+        private readonly List<GameObject> _cameras = new List<GameObject>();
+        private readonly object _lock = new object();
 
         private void Start()
         {
             _mainCamera = GameObject.Find("Main Camera");
-            _isMainCameraActive = true;
+            _cameras.Add(_mainCamera);
             _currentCameraIndex = 0;
             cameraUI.text = "Main";
         }
@@ -88,22 +25,92 @@ namespace Assets.Scripts.Prefabs
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Switch();
-                if (_isMainCameraActive)
+                lock (_lock)
                 {
-                    cameraUI.text = "Main";
-                }
-                else
-                {
-                    cameraUI.text = _cameras[_currentCameraIndex].transform.parent.name;
+                    Switch();
                 }
             }
 
             if (Input.GetKeyDown(KeyCode.M))
             {
-                SwitchToMain();
-                cameraUI.text = "Main";
+                lock (_lock)
+                {
+                    SwitchToMain();
+                }
             }
         }
+
+        public void Register(GameObject camera)
+        {
+            lock (_lock)
+            {
+                _cameras.Add(camera);
+            }
+        }
+
+        public void Unregister(GameObject camera)
+        {
+            lock (_lock)
+            {
+                if (_cameras[_currentCameraIndex] == camera)
+                {
+                    Switch();
+                    if (_currentCameraIndex != 0)
+                    {
+                        _currentCameraIndex--;
+                    }
+                }
+                _cameras.Remove(camera);
+            }
+        }
+
+        public void CheckSwitch(GameObject camera)
+        {
+            lock (_lock)
+            {
+                if (_cameras[_currentCameraIndex] == camera)
+                {
+                    Switch();
+                }
+            }
+        }
+
+        private void Switch()
+        {
+            var lastCameraIndex = _currentCameraIndex;
+
+            do
+            {
+                _currentCameraIndex++;
+                if (_currentCameraIndex >= _cameras.Count)
+                {
+                    _currentCameraIndex = 0;
+                }
+            } while (_currentCameraIndex != 0 && _cameras[_currentCameraIndex].transform.parent.gameObject.activeInHierarchy == false);
+
+            _cameras[_currentCameraIndex].SetActive(true);
+            _cameras[lastCameraIndex].SetActive(false);
+
+            if (_currentCameraIndex == 0)
+            {
+                cameraUI.text = "Main";
+            }
+            else
+            {
+                cameraUI.text = _cameras[_currentCameraIndex].transform.parent.name;
+            }
+        }
+
+        private void SwitchToMain()
+        {
+            _cameras[0].SetActive(true);
+            if (_currentCameraIndex != 0 && _currentCameraIndex < _cameras.Count)
+            {
+                _cameras[_currentCameraIndex].SetActive(false);
+            }
+            _currentCameraIndex = 0;
+            cameraUI.text = "Main";
+        }
+
     }
 }

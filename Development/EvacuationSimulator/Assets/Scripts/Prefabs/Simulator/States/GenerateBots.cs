@@ -20,12 +20,14 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         {
             Dialogs.OnDialogClose = () =>
             {
+                _context.Simulator.dialogs.SetActive(false);
                 ThreadEvent.Pulse(_lock);
             };
 
             // Start generating bots
             _context.Simulator.Dispatcher.Schedule(() =>
             {
+                _context.Simulator.dialogs.SetActive(true);
                 _context.Simulator.StartCoroutine(Dialogs.ShowBotsDialog());
                 _context.Simulator.StartCoroutine(_context.Simulator.BotsManager.Generate());
             });

@@ -73,13 +73,21 @@ namespace Assets.Scripts.Prefabs.Simulator.States
 
             _context.Simulator.controls.SetActive(false);
             _context.Simulator.resultsCanvas.SetActive(true);
+            _context.Simulator.resultsController.SetActive(true);
             _context.IsResultActive = true;
         }
 
         private void DeleteResults()
         {
+            _context.Simulator.resultsController.SetActive(false);
             _context.Simulator.resultsCanvas.SetActive(false);
             _context.IsResultActive = false;
+
+            // Reset size
+            var resultsRectTransform = _context.Simulator.resultsCanvas.transform.GetComponent<RectTransform>();
+            resultsRectTransform.sizeDelta = new Vector3(resultsRectTransform.sizeDelta.x, resultsRectTransform.sizeDelta.y - 60);
+            resultsRectTransform.position = new Vector3(resultsRectTransform.position.x, resultsRectTransform.position.y + 30, resultsRectTransform.position.z);
+
             foreach (var resultContainer in _resultContainers)
             {
                 _context.Simulator.DestroyGameObject(resultContainer);

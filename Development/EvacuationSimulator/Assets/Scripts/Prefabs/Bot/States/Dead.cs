@@ -14,10 +14,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
             _context.Status = BotStatus.DEAD;
             base.HandleState();
 
-            _context.Bot.Dispatcher.Schedule(() =>
-            {
-                _context.Bot.Hide();
-            }).WaitOne();
+            _context.Bot.Hide();
         }
     }
 }

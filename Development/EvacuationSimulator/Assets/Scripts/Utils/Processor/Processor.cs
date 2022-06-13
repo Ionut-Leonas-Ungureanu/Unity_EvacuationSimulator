@@ -48,8 +48,9 @@ namespace Assets.Scripts.Utils.Processor
                 {
                     _task?.Invoke();
                 }
-                catch
+                catch(Exception exception)
                 {
+                    Debug.Log(exception.Message);
                 }
             }
         }

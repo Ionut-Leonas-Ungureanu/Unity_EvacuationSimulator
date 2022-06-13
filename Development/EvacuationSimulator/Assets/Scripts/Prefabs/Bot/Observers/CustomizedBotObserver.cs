@@ -5,17 +5,17 @@ namespace Assets.Scripts.Prefabs.Bot.Observers
     class CustomizedBotObserver : IBotObserver
     {
         public Guid Id { get; set; }
-        public Action<object> _action;
+        public Action<BotController> _action;
 
-        public CustomizedBotObserver(Action<object> action)
+        public CustomizedBotObserver(Action<BotController> action)
         {
             Id = Guid.NewGuid();
             _action = action;
         }
 
-        public void Update(object args)
+        public void Update(BotController botController)
         {
-            _action?.Invoke(args);
+            _action?.Invoke(botController);
         }
     }
 }

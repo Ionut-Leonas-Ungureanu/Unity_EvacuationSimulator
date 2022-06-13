@@ -86,17 +86,29 @@ namespace Assets.Scripts.Prefabs.Bot.States
 
             _context.Bot.Dispatcher.Schedule(() =>
             {
-                lock (_context.NavigationLock)
+                if (Vector3.Distance(_context.Bot.transform.position, _context.GoalPosition) > 7)
                 {
-                    if (_context.NavigationPath != null && _context.NavigationPath.Count >= 2)
+                    lock (_context.NavigationLock)
                     {
-                        // Calculate angles
-                        var direction = _context.NavigationPath[0].Position - _context.Bot.transform.position;
-                        angle = Vector3.SignedAngle(_context.Bot.transform.forward, direction, Vector3.up);
+                        if (_context.NavigationPath != null && _context.NavigationPath.Count >= 2)
+                        {
+                            // Calculate angles
+                            var direction = _context.NavigationPath[0].Position - _context.Bot.transform.position;
+                            angle = Vector3.SignedAngle(_context.Bot.transform.forward, direction, Vector3.up);
 
-                        // Calculate distances
-                        distance = Vector3.Distance(_context.Bot.transform.position, _context.NavigationPath[0].Position);
+                            // Calculate distances
+                            distance = Vector3.Distance(_context.Bot.transform.position, _context.NavigationPath[0].Position);
+                        }
                     }
+                }
+                else
+                {
+                    // Calculate angles
+                    var direction = _context.GoalPosition - _context.Bot.transform.position;
+                    angle = Vector3.SignedAngle(_context.Bot.transform.forward, direction, Vector3.up);
+
+                    // Calculate distances
+                    distance = Vector3.Distance(_context.Bot.transform.position, _context.GoalPosition);
                 }
 
                 // Get proximities
@@ -167,7 +179,6 @@ namespace Assets.Scripts.Prefabs.Bot.States
                                 break;
                             case "Fire":
                                 _context.IsDead = true;
-                                collision |= 2;
                                 break;
                             default:
                                 collision |= 2;
@@ -176,7 +187,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
                     }
                 }
                 _context.Observation[Locals.OBSERVATION_COLLISION_INDEX] = collision;
-               
+
                 // Get angle from goal
                 _context.Observation[Locals.OBSERVATION_ANGLE_FROM_GOAL_INDEX] = angle;
                 // Get angle velocity
@@ -189,15 +200,29 @@ namespace Assets.Scripts.Prefabs.Bot.States
             }).WaitOne();
 
             // Check if bot reached checkpoint
-            if (Vector3.Distance(_context.BotPosition, _context.GoalPosition) < 5)
+            var distanceFromCheckpoint = Vector3.Distance(_context.BotPosition, _context.GoalPosition);
+            if (!_context.RandomGoalPositionSet && distanceFromCheckpoint < 7)
             {
-                _context.ObservationsAroundGoal++;
+                var center = _context.GoalPosition;
+                _context.Bot.Dispatcher.Schedule(() =>
+                {
+                    do
+                    {
+                        _context.GoalPosition = center + (Vector3)(7 * UnityEngine.Random.insideUnitCircle);
+                    } while (Physics.CheckSphere(_context.GoalPosition, _radiusCapsuleCollider));
+                }).WaitOne();
+                _context.RandomGoalPositionSet = true;
             }
 
-            if (_context.ObservationsAroundGoal >= 20)
+            if (_context.RandomGoalPositionSet)
             {
-                _context.IsCheckpointReached = true;
+                _context.ObservationsAroundGoal++;
+                if (_context.ObservationsAroundGoal >= 200 || distanceFromCheckpoint <= 0.5)
+                {
+                    _context.IsCheckpointReached = true;
+                }
             }
+
         }
 
         private void SetAction()
@@ -258,7 +283,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
                 case 3:
                     return -300;
                 case 1:
-                    return -150;
+                    return -200;
                 default:
                     return 0;
             }
@@ -271,7 +296,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
 
         private double CalculateRewardForTrapped(bool value)
         {
-            return value ? -5000 : 0;
+            return value ? -10000 : 0;
         }
 
         private double CalculateRewardForCheckpoint(bool value)

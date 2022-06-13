@@ -6,6 +6,6 @@ namespace Assets.Scripts.Prefabs.Bot.Observers
     {
         Guid Id { get; set; }
 
-        void Update(object args);
+        void Update(BotController botController);
     }
 }

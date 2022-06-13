@@ -49,6 +49,7 @@ public class Dialogs : MonoBehaviour
     public static IEnumerator ShowNavigationDialog()
     {
         _showNavigationDIalog = true;
+
         NavigationDialog.SetActive(true);
         while (_showNavigationDIalog)
         {
@@ -56,6 +57,7 @@ public class Dialogs : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         NavigationDialog.SetActive(false);
+        
         Counter = 1;
         OnDialogClose?.Invoke();
     } 
@@ -68,6 +70,7 @@ public class Dialogs : MonoBehaviour
     public static IEnumerator ShowFireDialog()
     {
         _showFireDIalog = true;
+        
         FireDialog.SetActive(true);
         while (_showFireDIalog)
         {
@@ -75,6 +78,7 @@ public class Dialogs : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         FireDialog.SetActive(false);
+        
         Counter = 1;
         OnDialogClose?.Invoke();
     }
@@ -87,6 +91,7 @@ public class Dialogs : MonoBehaviour
     public static IEnumerator ShowBotsDialog()
     {
         _showBotsDIalog = true;
+        
         BotsDialog.SetActive(true);
         while (_showBotsDIalog)
         {
@@ -94,6 +99,7 @@ public class Dialogs : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         BotsDialog.SetActive(false);
+        
         Counter = 1;
         OnDialogClose?.Invoke();
     }

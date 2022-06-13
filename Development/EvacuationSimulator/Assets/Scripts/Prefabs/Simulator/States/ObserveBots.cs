@@ -14,14 +14,14 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         public ObserveBots(SimulatorContext context) : base(context)
         {
             _lock = new object();
-            _botObserver = new CustomizedBotObserver((identifier) =>
+            _botObserver = new CustomizedBotObserver((botController) =>
             {
                 lock (_lock)
                 {
-                    if (SimulationConfigurator.Instance.MiscellaneousSettings.Train && (int)identifier == 0)
+                    if (SimulationConfigurator.Instance.MiscellaneousSettings.Train && botController.Identifier == 0)
                     {
                         // Kill all remaining bots
-                        foreach(var bot in _context.Simulator.BotsManager.Bots)
+                        foreach (var bot in _context.Simulator.BotsManager.Bots)
                         {
                             if (bot.IsActive)
                             {
