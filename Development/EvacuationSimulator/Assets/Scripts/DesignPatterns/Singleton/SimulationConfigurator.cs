@@ -14,6 +14,7 @@ namespace Assets.Scripts.DesignPatterns.Singleton
 
         public bool SimulationIsRunning { get; set; }
         public bool StopSimulation { get; set; }
+        public bool CanSwitchCamera { get; set; } = false;
 
         private static class SimulationConfiguratorNested
         {

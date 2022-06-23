@@ -146,6 +146,10 @@ namespace Assets.Scripts.Prefabs.Bot.States.Constants
             {
                 leftDistance = 2f;
                 rightDistance = 2f;
+
+                directionToUse = direction.normalized;
+                mfront = center + directionToUse * _highWidth;
+                mback = center - directionToUse * _highWidth;
             }
 
             _frontCornerLeft = mfront + directionLeft * leftDistance;

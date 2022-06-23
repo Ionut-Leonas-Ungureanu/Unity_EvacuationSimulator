@@ -45,6 +45,7 @@ namespace Assets.Scripts.Prefabs.Simulator.States
             _context.ResultsManager.Save();
 
             SimulationConfigurator.Instance.SimulationIsRunning = false;
+            SimulationConfigurator.Instance.CanSwitchCamera = false;
         }
 
         protected override void SetNextState()

@@ -63,7 +63,7 @@
     },
     {
       "FullName": "Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "LastWriteTime": "2022-06-13T12:00:51.1572041Z"
+      "LastWriteTime": "2022-06-23T01:08:53.648203Z"
     }
   ],
   "Functions": [
@@ -1029,10 +1029,10 @@
       ]
     },
     {
-      "FullName": "System.Void Unity.Jobs.IJobExtensions/JobStruct`1<Unity.Collections.LowLevel.Unsafe.UnsafeStream/ConstructJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "FullName": "System.Void Unity.Jobs.IJobExtensions/JobStruct`1<Unity.Collections.LowLevel.Unsafe.UnsafeStream/ConstructJobList>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
       "ModuleOptionsHash": 11834165633931345063,
-      "ModuleHash": "9138c3fae6fe30780b90b7f82d01481b",
-      "LinkName": "EC65C6FB1FDE45E6",
+      "ModuleHash": "19c06c9733b59d177fa260796057f6ff",
+      "LinkName": "18F4EDFD51FD6159",
       "AssemblyDependencyIndices": [
         5,
         8,
@@ -1042,10 +1042,10 @@
       ]
     },
     {
-      "FullName": "System.Void Unity.Jobs.IJobExtensions/JobStruct`1<Unity.Collections.LowLevel.Unsafe.UnsafeStream/ConstructJobList>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "FullName": "System.Void Unity.Jobs.IJobExtensions/JobStruct`1<Unity.Collections.LowLevel.Unsafe.UnsafeStream/ConstructJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
       "ModuleOptionsHash": 11834165633931345063,
-      "ModuleHash": "19c06c9733b59d177fa260796057f6ff",
-      "LinkName": "18F4EDFD51FD6159",
+      "ModuleHash": "9138c3fae6fe30780b90b7f82d01481b",
+      "LinkName": "EC65C6FB1FDE45E6",
       "AssemblyDependencyIndices": [
         5,
         8,

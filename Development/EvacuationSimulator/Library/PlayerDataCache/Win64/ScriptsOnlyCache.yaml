@@ -29,6 +29,12 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -110,53 +116,53 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11924}
     - Class: 114
-      Script: {instanceID: 12652}
+      Script: {instanceID: 12654}
     - Class: 114
-      Script: {instanceID: 12806}
+      Script: {instanceID: 12808}
     - Class: 114
-      Script: {instanceID: 12866}
+      Script: {instanceID: 12868}
     - Class: 114
-      Script: {instanceID: 13100}
+      Script: {instanceID: 13102}
     - Class: 114
-      Script: {instanceID: 13198}
+      Script: {instanceID: 13200}
     - Class: 114
-      Script: {instanceID: 13414}
+      Script: {instanceID: 13416}
     - Class: 114
-      Script: {instanceID: 13442}
+      Script: {instanceID: 13444}
     - Class: 114
-      Script: {instanceID: 14312}
+      Script: {instanceID: 14314}
     - Class: 114
-      Script: {instanceID: 14566}
+      Script: {instanceID: 14568}
     - Class: 114
-      Script: {instanceID: 14904}
+      Script: {instanceID: 14906}
     - Class: 114
-      Script: {instanceID: 14914}
+      Script: {instanceID: 14916}
     - Class: 114
-      Script: {instanceID: 14938}
+      Script: {instanceID: 14940}
     - Class: 114
-      Script: {instanceID: 15510}
+      Script: {instanceID: 15512}
     - Class: 114
-      Script: {instanceID: 15560}
+      Script: {instanceID: 15562}
     - Class: 114
-      Script: {instanceID: 15586}
+      Script: {instanceID: 15588}
     - Class: 114
-      Script: {instanceID: 15686}
+      Script: {instanceID: 15688}
     - Class: 114
-      Script: {instanceID: 16178}
+      Script: {instanceID: 16180}
     - Class: 114
-      Script: {instanceID: 16384}
+      Script: {instanceID: 16386}
     - Class: 114
-      Script: {instanceID: 16434}
+      Script: {instanceID: 16436}
     - Class: 114
-      Script: {instanceID: 16746}
+      Script: {instanceID: 16748}
     - Class: 114
-      Script: {instanceID: 16784}
+      Script: {instanceID: 16786}
     - Class: 114
-      Script: {instanceID: 16830}
+      Script: {instanceID: 16832}
     - Class: 114
-      Script: {instanceID: 16906}
+      Script: {instanceID: 16908}
     - Class: 114
-      Script: {instanceID: 16954}
+      Script: {instanceID: 16956}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -259,47 +265,47 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 12652}
+      Script: {instanceID: 12654}
     - Class: 114
-      Script: {instanceID: 12806}
+      Script: {instanceID: 12808}
     - Class: 114
-      Script: {instanceID: 12866}
+      Script: {instanceID: 12868}
     - Class: 114
-      Script: {instanceID: 13100}
+      Script: {instanceID: 13102}
     - Class: 114
-      Script: {instanceID: 13442}
+      Script: {instanceID: 13444}
     - Class: 114
-      Script: {instanceID: 13784}
+      Script: {instanceID: 13786}
     - Class: 114
-      Script: {instanceID: 13862}
+      Script: {instanceID: 13864}
     - Class: 114
-      Script: {instanceID: 14112}
+      Script: {instanceID: 14114}
     - Class: 114
-      Script: {instanceID: 14312}
+      Script: {instanceID: 14314}
     - Class: 114
-      Script: {instanceID: 14566}
+      Script: {instanceID: 14568}
     - Class: 114
-      Script: {instanceID: 14904}
+      Script: {instanceID: 14906}
     - Class: 114
-      Script: {instanceID: 14914}
+      Script: {instanceID: 14916}
     - Class: 114
-      Script: {instanceID: 15250}
+      Script: {instanceID: 15252}
     - Class: 114
-      Script: {instanceID: 15510}
+      Script: {instanceID: 15512}
     - Class: 114
-      Script: {instanceID: 15560}
+      Script: {instanceID: 15562}
     - Class: 114
-      Script: {instanceID: 15586}
+      Script: {instanceID: 15588}
     - Class: 114
-      Script: {instanceID: 15686}
+      Script: {instanceID: 15688}
     - Class: 114
-      Script: {instanceID: 16434}
+      Script: {instanceID: 16436}
     - Class: 114
-      Script: {instanceID: 16746}
+      Script: {instanceID: 16748}
     - Class: 114
-      Script: {instanceID: 16792}
+      Script: {instanceID: 16794}
     - Class: 114
-      Script: {instanceID: 16906}
+      Script: {instanceID: 16908}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -463,6 +469,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
+  - hash:
+      serializedVersion: 2
+      Hash: 66bca5cc6a18c5298ec75235e56a84d6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraMover
   - hash:
       serializedVersion: 2
       Hash: 234d407605354852c48e57df17c9a1c6

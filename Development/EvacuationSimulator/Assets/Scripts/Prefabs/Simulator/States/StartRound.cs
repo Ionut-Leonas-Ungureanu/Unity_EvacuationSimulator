@@ -27,6 +27,9 @@ namespace Assets.Scripts.Prefabs.Simulator.States
                     _context.Simulator.fireTraps.SetActive(true);
                 }
             });
+
+            _context.CanUseControls = true;
+            SimulationConfigurator.Instance.CanSwitchCamera = true;
         }
 
         protected override void SetNextState()

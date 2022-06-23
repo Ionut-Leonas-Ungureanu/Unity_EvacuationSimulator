@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Prefabs.Bot.Observers;
+﻿using Assets.Scripts.DesignPatterns.Singleton;
+using Assets.Scripts.Prefabs.Bot.Observers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +53,8 @@ namespace Assets.Scripts.Prefabs
         {
             lock (_lock)
             {
-                if (_cameras[_currentCameraIndex] == camera)
+                var index = _cameras.IndexOf(camera);
+                if (index == _currentCameraIndex)
                 {
                     Switch();
                     if (_currentCameraIndex != 0)
@@ -60,6 +62,11 @@ namespace Assets.Scripts.Prefabs
                         _currentCameraIndex--;
                     }
                 }
+                else if(index < _currentCameraIndex)
+                {
+                    _currentCameraIndex--;
+                }
+               
                 _cameras.Remove(camera);
             }
         }
@@ -77,6 +84,11 @@ namespace Assets.Scripts.Prefabs
 
         private void Switch()
         {
+            if(!SimulationConfigurator.Instance.CanSwitchCamera)
+            {
+                return;
+            }
+
             var lastCameraIndex = _currentCameraIndex;
 
             do
@@ -103,6 +115,11 @@ namespace Assets.Scripts.Prefabs
 
         private void SwitchToMain()
         {
+            if (!SimulationConfigurator.Instance.CanSwitchCamera)
+            {
+                return;
+            }
+
             _cameras[0].SetActive(true);
             if (_currentCameraIndex != 0 && _currentCameraIndex < _cameras.Count)
             {

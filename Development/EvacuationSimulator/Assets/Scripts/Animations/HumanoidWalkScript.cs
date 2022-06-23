@@ -23,8 +23,7 @@ public class HumanoidWalkScript : MonoBehaviour
         _animator.SetFloat("Speed", speed);
 
         var directionHorizontal = Quaternion.AngleAxis(ang, transform.up) * transform.forward;
-        ang = (ang == 100) ? -100 : (ang + 10);
-        Debug.DrawRay(transform.position, directionHorizontal * 2, Color.blue, 1);
+        ang = (ang == 110) ? -110 : (ang + 10);
 
         var center = new Vector3(0, 0.86f, 0);
         var radius = 0.25f;
@@ -34,10 +33,41 @@ public class HumanoidWalkScript : MonoBehaviour
         var startCapsule = transform.position + center + Vector3.up * distanceToPoints;
         var endCapsule = transform.position + center - Vector3.up * (distanceToPoints);
 
-        Debug.DrawRay(endCapsule, transform.forward * 2, Color.blue, 1);
-        Debug.DrawRay(startCapsule, transform.forward * 2, Color.red, 1);
+        
+        
         //Physics.SphereCast(endCapsule, 0.15f, transform.forward, out var hit, 5, ~(1 << 10));
-        if (Physics.Raycast(endCapsule, transform.forward, out var hit, 1f))
+        
+
+        var center1 = new Vector3(0, 0.95f, 0);
+        var height1 = 1.7f;
+        var _radiusCapsuleCollider = 0.29f;
+        var distanceToPoints1 = height1 / 2 - _radiusCapsuleCollider;
+        var _startCapsuleColliderConstant = center1 + Vector3.up * distanceToPoints1;
+        var _endCapsuleColliderConstant = center1 - Vector3.up * distanceToPoints1;
+        var startCapsule1 = transform.position + _startCapsuleColliderConstant;
+        var endCapsule1 = transform.position + _endCapsuleColliderConstant;
+
+        var _raysStartingPoint = new Vector3(0, 0.86f, 0);
+        var _raysMiddlePoint = _raysStartingPoint - new Vector3(0, 0.1f, 0);
+        var middlePoint = transform.position + _raysMiddlePoint;
+
+        if (Physics.Raycast(middlePoint, transform.forward, out var hit, 1f))
             Debug.Log($"Hit at {hit.distance} on {hit.collider.gameObject.name}");
+
+        Debug.DrawRay(middlePoint, directionHorizontal * 1, Color.blue, 1);
+
+        Debug.DrawRay(endCapsule1, transform.forward * 2, Color.blue, 1);
+        Debug.DrawRay(startCapsule1, transform.forward * 2, Color.red, 1);
+
+        var colliders = Physics.OverlapCapsule(startCapsule1, endCapsule1, _radiusCapsuleCollider);
+
+        // Get collision
+        foreach (var collider in colliders)
+        {
+            if (collider.name != gameObject.name)
+            {
+                Debug.Log($"hit {collider.name}");
+            }
+        }
     }
 }

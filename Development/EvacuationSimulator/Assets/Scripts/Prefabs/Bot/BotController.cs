@@ -19,8 +19,6 @@ namespace Assets.Scripts.Prefabs.Bot
         private CameraController _cameraController;
         private GameObject _botCamera;
         private Animator _animator;
-        private Rigidbody _rigidBody;
-        private CharacterController _characterController;
 
         private BotContext _context;
         private Processor _processor;
@@ -36,6 +34,7 @@ namespace Assets.Scripts.Prefabs.Bot
         public BotStatus Status => _context.Status;
 
         public float Speed { get; set; }
+        public float SpeedMultiplier { get; set; } = 1f;
         public float Direction { get; set; } = 0;
         public float TargetDirection { get; set; } = 0;
         public bool IsActive => _context.HasToEscape;
@@ -84,12 +83,15 @@ namespace Assets.Scripts.Prefabs.Bot
 
             // Get animator
             _animator = transform.GetComponent<Animator>();
+            if (!_context.IsTrainingTheNetwork)
+            {
+                SpeedMultiplier = SimulationConfigurator.Instance.BotsSettings.Speed;
+            }
 
             var geo = transform.GetChild(0).gameObject;
             var head = geo.transform.GetChild(0).gameObject;
             var suit = geo.transform.GetChild(1).gameObject;
-            _rigidBody = gameObject.GetComponent<Rigidbody>();
-            _characterController = gameObject.GetComponent<CharacterController>();
+
             _headRenderer = head.GetComponent<SkinnedMeshRenderer>();
             _suitRenderer = suit.GetComponent<SkinnedMeshRenderer>();
 
@@ -115,8 +117,6 @@ namespace Assets.Scripts.Prefabs.Bot
 
         private void UpdateDirection()
         {
-            _animator.SetFloat("Speed", Speed);
-
             lock (_lock)
             {
                 if (TargetDirection > Direction)
@@ -127,9 +127,11 @@ namespace Assets.Scripts.Prefabs.Bot
                 {
                     Direction -= 0.1f;
                 }
-
-                _animator.SetFloat("Direction", Direction);
             }
+
+            _animator.SetFloat("SpeedMultiplier", SpeedMultiplier);
+            _animator.SetFloat("Speed", Speed);
+            _animator.SetFloat("Direction", Direction);
         }
 
         private void OnDestroy()
@@ -171,7 +173,7 @@ namespace Assets.Scripts.Prefabs.Bot
 
         public void Hide()
         {
-            Dispatcher.Schedule(() => 
+            Dispatcher.Schedule(() =>
             {
                 gameObject.SetActive(false);
                 _cameraController.CheckSwitch(_botCamera);
@@ -236,34 +238,34 @@ namespace Assets.Scripts.Prefabs.Bot
 
         #endregion
 
-        private void OnDrawGizmos()
-        {
-            if (!_context.IsTrainingTheNetwork)
-            {
-                return;
-            }
+        //private void OnDrawGizmos()
+        //{
+        //    //if (!_context.IsTrainingTheNetwork)
+        //    //{
+        //    //    return;
+        //    //}
 
-            if (_context?.NavigationPath == null)
-            {
-                return;
-            }
+        //    if (_context?.NavigationPath == null)
+        //    {
+        //        return;
+        //    }
 
-            foreach (var node in _context.NavigationPath)
-            {
-                if (node != null)
-                {
-                    if (node.Walkable)
-                    {
-                        Gizmos.color = Color.green;
-                    }
-                    else
-                    {
-                        Gizmos.color = Color.red;
-                    }
-                    Gizmos.DrawCube(node.Position, Vector3.one * (0.2f * 2 - 0.1f));
-                }
-            }
-        }
+        //    foreach (var node in _context.NavigationPath)
+        //    {
+        //        if (node != null)
+        //        {
+        //            if (node.Walkable)
+        //            {
+        //                Gizmos.color = Color.green;
+        //            }
+        //            else
+        //            {
+        //                Gizmos.color = Color.red;
+        //            }
+        //            Gizmos.DrawCube(node.Position, Vector3.one * (0.2f * 2 - 0.1f));
+        //        }
+        //    }
+        //}
 
         public void Dispose()
         {

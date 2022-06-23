@@ -37,8 +37,6 @@ namespace Assets.Scripts.Prefabs.Simulator.States
 
             Dialogs.StopShowBotsDialog();
             ThreadEvent.Wait(_lock);
-
-            _context.CanUseControls = true;
         }
 
         protected override void SetNextState()

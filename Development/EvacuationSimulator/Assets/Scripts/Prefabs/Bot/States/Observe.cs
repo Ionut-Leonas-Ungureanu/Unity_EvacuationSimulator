@@ -167,26 +167,26 @@ namespace Assets.Scripts.Prefabs.Bot.States
                 var colliders = Physics.OverlapCapsule(startCapsule, endCapsule, _radiusCapsuleCollider);
 
                 // Get collision
-                var collision = 0;
                 foreach (var collider in colliders)
                 {
                     if (collider.name != _context.Bot.Name)
                     {
+                        //Debug.Log($"hit {collider.name}");
                         switch (collider.tag)
                         {
                             case "Bot":
-                                collision |= 1;
+                                _context.Observation[Locals.OBSERVATION_COLLISION_WITH_BOT_INDEX] = 1;
                                 break;
                             case "Fire":
                                 _context.IsDead = true;
+                                _context.Observation[Locals.OBSERVATION_COLLISION_WITH_FIRE_INDEX] = 1;
                                 break;
                             default:
-                                collision |= 2;
+                                _context.Observation[Locals.OBSERVATION_COLLISION_WITH_ANYTHING_ELSE_INDEX] = 1;
                                 break;
                         }
                     }
                 }
-                _context.Observation[Locals.OBSERVATION_COLLISION_INDEX] = collision;
 
                 // Get angle from goal
                 _context.Observation[Locals.OBSERVATION_ANGLE_FROM_GOAL_INDEX] = angle;
@@ -259,13 +259,17 @@ namespace Assets.Scripts.Prefabs.Bot.States
             double reward = 0;
 
             reward += CalculateRewardBasedOnAngleAndDistance(_context.Observation[Locals.OBSERVATION_ANGLE_FROM_GOAL_INDEX],
-                _context.Observation[Locals.OBSERVATION_DISTANCE_INDEX]);
+                                                             _context.Observation[Locals.OBSERVATION_DISTANCE_INDEX]);
+            //reward += CalculateRewardBasedDistances(_context.InitialObservation[Locals.OBSERVATION_DISTANCE_INDEX],
+            //                                        _context.Observation[Locals.OBSERVATION_DISTANCE_INDEX]);
             //reward += CalculateRewardBasedOnDistance(_context.Observation[Locals.OBSERVATION_DISTANCE_INDEX]);
-            reward += CalculateRewardBasedOnObstacle(_context.Observation[Locals.OBSERVATION_COLLISION_INDEX]);
-            reward += CalculateRewardForDead(_context.IsDead);
-            reward += CalculateRewardForTrapped(_context.IsTrapped);
-            reward += CalculateRewardForCheckpoint(_context.IsCheckpointReached);
-            reward += CalculateRewardForCollected();
+            reward += CalculateRewardBasedOnObstacle(_context.Observation[Locals.OBSERVATION_COLLISION_WITH_BOT_INDEX],
+                                                    _context.Observation[Locals.OBSERVATION_COLLISION_WITH_FIRE_INDEX],
+                                                    _context.Observation[Locals.OBSERVATION_COLLISION_WITH_ANYTHING_ELSE_INDEX]);
+            //reward += CalculateRewardForDead(_context.IsDead);
+            //reward += CalculateRewardForTrapped(_context.IsTrapped);
+            //reward += CalculateRewardForCheckpoint(_context.IsCheckpointReached);
+            //reward += CalculateRewardForCollected();
 
             return reward;
         }
@@ -275,18 +279,25 @@ namespace Assets.Scripts.Prefabs.Bot.States
             return -1 * distance * Math.Abs(angle);
         }
 
-        private double CalculateRewardBasedOnObstacle(double value)
+        private double CalculateRewardBasedDistances(double d1, double d2)
         {
-            switch (value)
+            if (d2 < d1)
             {
-                case 2:
-                case 3:
-                    return -300;
-                case 1:
-                    return -200;
-                default:
-                    return 0;
+                return 10;
             }
+            return 0;
+        }
+
+        private double CalculateRewardBasedOnObstacle(double botCollision, double fireCollision, double otherCollision)
+        {
+            double reward = 0;
+            if (botCollision == 1)
+                reward += -300;
+            if (fireCollision == 1)
+                reward += -10000;
+            if (otherCollision == 1)
+                reward += -1000;
+            return reward;
         }
 
         private double CalculateRewardForDead(bool value)

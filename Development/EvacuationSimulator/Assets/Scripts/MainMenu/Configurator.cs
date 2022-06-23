@@ -9,6 +9,7 @@ namespace Assets.Scripts.MainMenu
 
         #region Sliders
         private Slider NoBots_slider;
+        private Slider Speed_slider;
 
         private Slider NoRounds_slider;
         private Slider WaitToDisplayResults_slider;
@@ -29,6 +30,10 @@ namespace Assets.Scripts.MainMenu
             NoBots_slider = GameObject.Find("NumberOfBots_slider").GetComponent<Slider>();
             NoBots_slider.value = SimulationConfigurator.Instance.BotsSettings.NumberBots;
             NoBots_slider.onValueChanged.AddListener(SetNumberOfBots);
+
+            Speed_slider = GameObject.Find("Speed_slider").GetComponent<Slider>();
+            Speed_slider.value = SimulationConfigurator.Instance.BotsSettings.Speed;
+            Speed_slider.onValueChanged.AddListener(SetSpeed);
 
             NoRounds_slider = GameObject.Find("NumberOfRuns_slider").GetComponent<Slider>();
             NoRounds_slider.value = SimulationConfigurator.Instance.SimulationSettings.NumberOfRuns;
@@ -65,6 +70,11 @@ namespace Assets.Scripts.MainMenu
         public void SetNumberOfBots(float value)
         {
             SimulationConfigurator.Instance.BotsSettings.NumberBots = (uint)value;
+        }
+
+        public void SetSpeed(float value)
+        {
+            SimulationConfigurator.Instance.BotsSettings.Speed = value;
         }
 
         #endregion

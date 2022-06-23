@@ -20,7 +20,8 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         {
             _context.Simulator.Dispatcher.Schedule(ShowResults).WaitOne();
             Thread.Sleep((int)SimulationConfigurator.Instance.SimulationSettings.WaitToDisplayResults * 1000);
-            if (_context.SimulationRoundCounter != SimulationConfigurator.Instance.SimulationSettings.NumberOfRuns)
+            if (_context.SimulationRoundCounter != SimulationConfigurator.Instance.SimulationSettings.NumberOfRuns
+                || !SimulationConfigurator.Instance.StopSimulation)
             {
                 _context.Simulator.Dispatcher.Schedule(DeleteResults).WaitOne();
             }
@@ -34,7 +35,8 @@ namespace Assets.Scripts.Prefabs.Simulator.States
         private void ShowResults()
         {
             var container = new RunResultsContainer(_context.Simulator.BotsManager.Bots.Length, _context.SimulationRoundCounter);
-            foreach(var bot in _context.Simulator.BotsManager.Bots)
+            _context.ResultsManager.Add(container);
+            foreach (var bot in _context.Simulator.BotsManager.Bots)
             {
                 var result = new BotResult
                 {
@@ -45,7 +47,6 @@ namespace Assets.Scripts.Prefabs.Simulator.States
                 };
                 // Remember the result 
                 container.Add(result, bot.Identifier);
-                _context.ResultsManager.Add(container);
 
                 // Show on GUI
                 var resultContainer = _context.Simulator.InstantiateGameObject(_context.Simulator.resultsContainer);

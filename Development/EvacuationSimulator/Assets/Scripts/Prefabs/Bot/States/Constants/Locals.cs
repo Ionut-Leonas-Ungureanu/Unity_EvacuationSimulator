@@ -16,11 +16,14 @@ namespace Assets.Scripts.Prefabs.Bot.States.Constants
         public static readonly float OBSERVATION_OFFSET_ANGLE_OF_RAYS = 10;
         public static readonly float OBSERVATION_MAX_DISTANCE_OF_RAYS = 5;
 
-        public static readonly int OBSERVATION_SIZE = OBSERVATION_NUMBER_OF_RAY_DATA + 8;
+        public static readonly int OBSERVATION_SIZE = OBSERVATION_NUMBER_OF_RAY_DATA + 6;
         public static readonly int OBSERVATION_ANGLE_FROM_GOAL_INDEX = OBSERVATION_NUMBER_OF_RAY_DATA;
         public static readonly int OBSERVATION_ANGLE_VELOCITY_INDEX = OBSERVATION_ANGLE_FROM_GOAL_INDEX + 1;
         public static readonly int OBSERVATION_DISTANCE_INDEX = OBSERVATION_ANGLE_VELOCITY_INDEX + 1;
-        public static readonly int OBSERVATION_COLLISION_INDEX = OBSERVATION_DISTANCE_INDEX + 1;
+
+        public static readonly int OBSERVATION_COLLISION_WITH_BOT_INDEX = OBSERVATION_DISTANCE_INDEX + 1;
+        public static readonly int OBSERVATION_COLLISION_WITH_FIRE_INDEX = OBSERVATION_COLLISION_WITH_BOT_INDEX + 1;
+        public static readonly int OBSERVATION_COLLISION_WITH_ANYTHING_ELSE_INDEX = OBSERVATION_COLLISION_WITH_FIRE_INDEX + 1;
 
         #endregion
 
