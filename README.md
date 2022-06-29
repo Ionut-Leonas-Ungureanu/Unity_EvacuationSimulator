@@ -1,2 +1,2 @@
 # Unity_EvacuationSimulator
-A evacuation simulator developed in unity, using DQN for bots.
+An evacuation simulator developed in unity, using DQN for bots.
