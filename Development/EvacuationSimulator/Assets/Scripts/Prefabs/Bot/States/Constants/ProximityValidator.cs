@@ -142,7 +142,9 @@ namespace Assets.Scripts.Prefabs.Bot.States.Constants
             if (rightDistance == 0)
                 rightDistance = distanceBackRight < distanceFrontRight ? distanceBackRight : distanceFrontRight;
 
-            if(leftDistance < 0.5 && rightDistance < 0.5)
+            if((leftDistance < 0.5f && rightDistance < 0.5f))
+                //|| ((int)angleToCompare == 45 && rightDistance < 0.5f)
+                //|| ((int)angleToCompare == -45 && leftDistance < 0.5f))
             {
                 leftDistance = 2f;
                 rightDistance = 2f;

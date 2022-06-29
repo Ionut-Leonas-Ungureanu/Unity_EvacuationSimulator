@@ -284,6 +284,15 @@ namespace Assets.Scripts.Prefabs.Bot.States.Context
             var botPosition = BotPosition;
             var distance = Vector3.Distance(botPosition, firstNodePosition);
 
+            if(distance > 3f)
+            {
+                lock (NavigationLock)
+                {
+                    FindPath(botPosition);
+                }
+                return;
+            }
+
             var targetForDirection = new Vector3(secondNodePosition.x, firstNodePosition.y, secondNodePosition.z);
             var direction = targetForDirection - firstNodePosition;
 

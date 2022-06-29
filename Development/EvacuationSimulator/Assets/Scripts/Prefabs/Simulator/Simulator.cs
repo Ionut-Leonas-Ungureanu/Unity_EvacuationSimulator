@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.DesignPatterns.Singleton;
 using Assets.Scripts.Prefabs.Simulator.States.Context;
 using Assets.Scripts.Utils;
+using Assets.Scripts.Utils.AStar;
 using Assets.Scripts.Utils.Processor;
 using System;
 using UnityEngine;

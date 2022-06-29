@@ -21,7 +21,7 @@ namespace Assets.Scripts.Prefabs.Simulator.States
             _context.Simulator.Dispatcher.Schedule(ShowResults).WaitOne();
             Thread.Sleep((int)SimulationConfigurator.Instance.SimulationSettings.WaitToDisplayResults * 1000);
             if (_context.SimulationRoundCounter != SimulationConfigurator.Instance.SimulationSettings.NumberOfRuns
-                || !SimulationConfigurator.Instance.StopSimulation)
+                && !SimulationConfigurator.Instance.StopSimulation)
             {
                 _context.Simulator.Dispatcher.Schedule(DeleteResults).WaitOne();
             }

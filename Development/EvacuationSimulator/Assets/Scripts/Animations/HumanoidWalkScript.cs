@@ -54,10 +54,11 @@ public class HumanoidWalkScript : MonoBehaviour
         if (Physics.Raycast(middlePoint, transform.forward, out var hit, 1f))
             Debug.Log($"Hit at {hit.distance} on {hit.collider.gameObject.name}");
 
-        Debug.DrawRay(middlePoint, directionHorizontal * 1, Color.blue, 1);
+        Debug.DrawRay(middlePoint, directionHorizontal * 5, Color.blue, 1);
+        Debug.DrawRay(endCapsule, directionHorizontal * 5, Color.red, 1);
 
-        Debug.DrawRay(endCapsule1, transform.forward * 2, Color.blue, 1);
-        Debug.DrawRay(startCapsule1, transform.forward * 2, Color.red, 1);
+        //Debug.DrawRay(endCapsule1, transform.forward * 2, Color.blue, 1);
+        //Debug.DrawRay(startCapsule1, transform.forward * 2, Color.red, 1);
 
         var colliders = Physics.OverlapCapsule(startCapsule1, endCapsule1, _radiusCapsuleCollider);
 

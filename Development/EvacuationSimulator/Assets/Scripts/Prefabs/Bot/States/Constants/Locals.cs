@@ -42,8 +42,8 @@ namespace Assets.Scripts.Prefabs.Bot.States.Constants
         public static readonly string DQN_OUTPUT_LAYER_FUNCTION = "LINEAR";
         public static readonly double DQN_GAMMA = 0.99;
         public static readonly double DQN_EXPLORATION = 0.8;
-        public static readonly double DQN_MINIMUM_EXPLORATION = 0.05;
-        public static readonly double DQN_EXPLORATION_DECAY = 0.995;
+        public static readonly double DQN_MINIMUM_EXPLORATION = 0.1;
+        public static readonly double DQN_EXPLORATION_DECAY = 0.997;
         public static readonly uint DQN_TRAIN_EPOCHS = 1;
         public static readonly uint DQN_REPLAY_BATCH_SIZE = 50;
         public static readonly uint DQN_EXPERIENCE_MEMORY_SIZE = 3000;

@@ -238,34 +238,34 @@ namespace Assets.Scripts.Prefabs.Bot
 
         #endregion
 
-        //private void OnDrawGizmos()
-        //{
-        //    //if (!_context.IsTrainingTheNetwork)
-        //    //{
-        //    //    return;
-        //    //}
+        private void OnDrawGizmos()
+        {
+            if (!_context.IsTrainingTheNetwork)
+            {
+                return;
+            }
 
-        //    if (_context?.NavigationPath == null)
-        //    {
-        //        return;
-        //    }
+            if (_context?.NavigationPath == null)
+            {
+                return;
+            }
 
-        //    foreach (var node in _context.NavigationPath)
-        //    {
-        //        if (node != null)
-        //        {
-        //            if (node.Walkable)
-        //            {
-        //                Gizmos.color = Color.green;
-        //            }
-        //            else
-        //            {
-        //                Gizmos.color = Color.red;
-        //            }
-        //            Gizmos.DrawCube(node.Position, Vector3.one * (0.2f * 2 - 0.1f));
-        //        }
-        //    }
-        //}
+            foreach (var node in _context.NavigationPath)
+            {
+                if (node != null)
+                {
+                    if (node.Walkable)
+                    {
+                        Gizmos.color = Color.green;
+                    }
+                    else
+                    {
+                        Gizmos.color = Color.red;
+                    }
+                    Gizmos.DrawCube(node.Position, Vector3.one * (0.2f * 2 - 0.1f));
+                }
+            }
+        }
 
         public void Dispose()
         {

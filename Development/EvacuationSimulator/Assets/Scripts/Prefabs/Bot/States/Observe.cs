@@ -209,7 +209,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
                     do
                     {
                         _context.GoalPosition = center + (Vector3)(7 * UnityEngine.Random.insideUnitCircle);
-                    } while (Physics.CheckSphere(_context.GoalPosition, _radiusCapsuleCollider));
+                    } while (Physics.CheckSphere(_context.GoalPosition, _radiusCapsuleCollider * 2));
                 }).WaitOne();
                 _context.RandomGoalPositionSet = true;
             }
@@ -276,7 +276,7 @@ namespace Assets.Scripts.Prefabs.Bot.States
 
         private double CalculateRewardBasedOnAngleAndDistance(double angle, double distance)
         {
-            return -1 * distance * Math.Abs(angle);
+            return -1 * distance * (Math.Abs(angle) + 1);
         }
 
         private double CalculateRewardBasedDistances(double d1, double d2)
@@ -292,11 +292,35 @@ namespace Assets.Scripts.Prefabs.Bot.States
         {
             double reward = 0;
             if (botCollision == 1)
-                reward += -300;
+            {
+                for (var i = 0; i < Locals.OBSERVATION_TOTAL_NUMBER_OF_RAYS; ++i)
+                {
+                    if (_context.Observation[Locals.OBSERVATION_TOTAL_NUMBER_OF_RAYS + i] == 1)
+                    {
+                        reward += -200;
+                        break;
+                    }
+                }
+            }
             if (fireCollision == 1)
-                reward += -10000;
+            {
+                reward += -5000;
+            }
             if (otherCollision == 1)
-                reward += -1000;
+            {
+                for (var i = 0; i < Locals.OBSERVATION_TOTAL_NUMBER_OF_RAYS; ++i)
+                {
+                    if (_context.Observation[Locals.OBSERVATION_TOTAL_NUMBER_OF_RAYS + i] == 0
+                        && _context.Observation[i] <= 0.29f)
+                    {
+                        //Debug.Log($"colision -> {_context.Observation[i]}");
+                        reward += -650;
+                        break;
+                    }
+                }
+            }
+
+
             return reward;
         }
 

@@ -2,6 +2,7 @@
 using Assets.Scripts.Prefabs.Bot.States.Constants;
 using Assets.Scripts.Prefabs.Simulator.States.Context;
 using System.IO;
+using UnityEngine;
 
 namespace Assets.Scripts.Prefabs.Simulator.States
 {
@@ -18,6 +19,9 @@ namespace Assets.Scripts.Prefabs.Simulator.States
             // Dispose bots
             _context.Simulator.Dispatcher.Schedule(() =>
             {
+                var cameraController = GameObject.Find("OfficeBounds").GetComponent<CameraController>();
+                cameraController.ShowMain();
+
                 foreach (var bot in _context.Simulator.BotsManager.Bots)
                 {
                     bot.Dispose();

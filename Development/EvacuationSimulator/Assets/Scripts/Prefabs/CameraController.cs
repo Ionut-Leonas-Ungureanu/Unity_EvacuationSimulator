@@ -82,6 +82,14 @@ namespace Assets.Scripts.Prefabs
             }
         }
 
+        public void ShowMain()
+        {
+            lock (_lock)
+            {
+                SwitchToMain();
+            }
+        }
+
         private void Switch()
         {
             if(!SimulationConfigurator.Instance.CanSwitchCamera)
